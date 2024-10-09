@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Products = ({ filter }) => {
-	const [data, setData] = useState([]); // Initialize data to an empty array
+	const [data, setData] = useState([]);
 	const [showAll, setShowAll] = useState(false);
 
 	const url =
@@ -12,7 +12,9 @@ const Products = ({ filter }) => {
 		axios
 			.get(url)
 			.then((res) => {
-				setData(res.data);
+				// Converting data to array if it's an object because state  is []
+				const fetchedData = res.data ? Object.values(res.data) : [];
+				setData(fetchedData);
 			})
 			.catch((err) => {
 				console.log(err);

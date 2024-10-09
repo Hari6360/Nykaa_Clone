@@ -128,7 +128,9 @@ const Navbar = () => {
 			<nav className="bg-white border-b shadow-sm">
 				<div className="container flex mx-8 justify-evenly py-4 px-16">
 					{/* Logo and Links */}
-					<div className="flex items-center space-x-8">
+					<div
+						className="flex items-center space-x-8"
+						onClick={() => navigate("/")}>
 						<img
 							src="https://logos-download.com/wp-content/uploads/2021/01/Nykaa_Logo.png"
 							alt="Nykaa logo"

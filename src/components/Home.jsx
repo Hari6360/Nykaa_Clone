@@ -3,11 +3,12 @@ import CarouselBtn from "../buttons/CarouselBtn";
 import Products from "./Products";
 import { useNavigate } from "react-router-dom";
 import { Carousel } from "./Carousel";
+import { ScrollTopBtn } from "../buttons/ScrollTopBtn";
+import { Footer } from "./Footer";
 
 export const Home = () => {
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 	const [filter, setFilter] = useState("All");
-	const [scrollButton, setScrollButton] = useState(false);
 	const totalViews = 5;
 
 	const navigate = useNavigate();
@@ -20,25 +21,13 @@ export const Home = () => {
 		"https://images-static.nykaa.com/creatives/4e921e08-8341-4124-842d-caec4408e50b/default.jpg?tr=cm-pad_resize,w-900",
 	];
 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > 300) {
-				setScrollButton(true);
-			} else {
-				setScrollButton(false);
-			}
-		};
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
-
-	const scrollToTop = () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
-	};
-
 	const handleMakeup = () => {
 		setFilter("Makeup");
-		navigate("/Makeup");
+		navigate("/makeup");
+	};
+	const handleSkin = () => {
+		setFilter("Skin");
+		navigate("/Skin");
 	};
 
 	return (
@@ -134,7 +123,7 @@ export const Home = () => {
 					</button>
 					<button
 						className="w-14 h-8 mx-4 border border-red-500 rounded-full"
-						onClick={() => setFilter("Skin")}>
+						onClick={handleSkin}>
 						Skin
 					</button>
 					<button
@@ -151,14 +140,8 @@ export const Home = () => {
 
 				<Products filter={filter} />
 			</div>
-
-			{scrollButton && (
-				<button
-					onClick={scrollToTop}
-					className="fixed bottom-10 right-6 bg-pink-300 text-black p-10 rounded-full shadow-lg">
-					↑
-				</button>
-			)}
+			<ScrollTopBtn />
+			<Footer />
 		</>
 	);
 };

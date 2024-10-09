@@ -4,13 +4,3 @@
 	padding: 2rem;
 	text-align: center;
 }
-
-.blink {
-	animation: blinker 1.5s linear infinite;
-}
-
-@keyframes blinker {
-	50% {
-		opacity: 0;
-	}
-}
