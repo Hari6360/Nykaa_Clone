@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const Skin = () => {
 	const [data, setData] = useState([]);
+	const [cart, setCart] = useState([]);
 
 	const url =
 		"https://nykaa-e3286-default-rtdb.firebaseio.com/SkinProducts/Skinproducts.json";
@@ -19,6 +20,11 @@ export const Skin = () => {
 				console.log(err);
 			});
 	}, []);
+
+	const handleAddToCart = (product) => {
+		setCart((prevCart) => [...prevCart, product]);
+		console.log("Cart Items:", [...cart, product]);
+	};
 
 	return (
 		<>
@@ -51,8 +57,9 @@ export const Skin = () => {
 									{product.rating} reviews
 								</span>
 							</div>
-							{/* <p className="mt-2 text-gray-500">{product.spanned}</p>{" "} */}
-							<button className="mx-auto mt-4 flex flex-col align-baseline justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 active:bg-red-700 transition duration-300 ease-in-out">
+							<button
+								className="mx-auto mt-4 flex flex-col align-baseline justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 active:bg-red-700 transition duration-300 ease-in-out"
+								onClick={() => handleAddToCart(product)}>
 								Add To Cart
 							</button>
 						</div>

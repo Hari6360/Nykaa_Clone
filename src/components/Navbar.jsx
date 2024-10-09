@@ -146,9 +146,17 @@ const Navbar = () => {
 							{/* Dropdown for Categories */}
 							{showCategoryDropdown && (
 								<div className="absolute left-0 mt-2 bg-white border border-gray-300 shadow-lg rounded-md overflow-hidden z-10 p-4 w-[800px]">
-									<div className="grid grid-cols-5 gap-4">
+									<div
+										className="grid grid-cols-5 gap-4"
+										onClick={() => {
+											navigate("/Makeup");
+										}}>
 										<div>
-											<h3 className="font-bold mb-2">Face</h3>
+											<h3
+												className="font-bold mb-2 cursor-pointer" // Add cursor-pointer for better UX
+											>
+												Face
+											</h3>
 											<ul className="space-y-1 text-gray-800">
 												<li>Face Primer</li>
 												<li>Concealer</li>
@@ -277,7 +285,11 @@ const Navbar = () => {
 							/>
 						</div>
 
-						<button className="bg-pink-600 text-white px-4 py-2 rounded-md">
+						<button
+							className="bg-pink-600 text-white px-4 py-2 rounded-md"
+							onClick={() => {
+								navigate("/Login");
+							}}>
 							Sign in
 						</button>
 

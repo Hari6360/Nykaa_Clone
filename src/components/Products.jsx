@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useCart } from "../context/CartContext"; // Importing the useCart hook
 
 const Products = ({ filter }) => {
 	const [data, setData] = useState([]);
@@ -12,7 +13,7 @@ const Products = ({ filter }) => {
 		axios
 			.get(url)
 			.then((res) => {
-				// Converting data to array if it's an object because state  is []
+				// Converting data to array if it's an object because state is []
 				const fetchedData = res.data ? Object.values(res.data) : [];
 				setData(fetchedData);
 			})
@@ -33,6 +34,9 @@ const Products = ({ filter }) => {
 
 	// If "showAll" is false, only show the first 3 products
 	const displayedData = showAll ? filteredData : filteredData.slice(0, 3);
+
+	// the handleAddToCart function from context
+	const { handleAddToCart } = useCart();
 
 	return (
 		<>
@@ -66,6 +70,13 @@ const Products = ({ filter }) => {
 							</div>
 
 							<p className="mt-2 text-gray-500">{product.shades}</p>
+
+							{/* Add to Cart Button */}
+							<button
+								onClick={() => handleAddToCart(product)}
+								className="mt-4 p-2 bg-green-500 text-white rounded hover:bg-green-600">
+								Add to Cart
+							</button>
 						</div>
 					))
 				) : (

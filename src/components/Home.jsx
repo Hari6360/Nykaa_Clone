@@ -136,6 +136,7 @@ export const Home = () => {
 						onClick={handleMakeup}>
 						Makeup
 					</button>
+					
 				</div>
 
 				<Products filter={filter} />
