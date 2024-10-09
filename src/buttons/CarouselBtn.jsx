@@ -1,7 +1,6 @@
 import React from "react";
 
 export const CarouselBtn = ({
-	currentImageIndex,
 	setCurrentImageIndex,
 	direction,
 	totalViews,
@@ -25,7 +24,7 @@ export const CarouselBtn = ({
 	return (
 		<button
 			onClick={handleClick}
-			className={`absolute ${topPosition} transform -translate-y-1/2 ${buttonPosition} text-white bg-gray-800 rounded-full px-2 py-2 hover:bg-white z-10`}>
+			className={`absolute ${topPosition} transform -translate-y-1/2 ${buttonPosition} text-black bg-white rounded-full px-4 py-6 hover:bg-gray-800 z-10`}>
 			{direction === "next" ? "→" : "←"}
 		</button>
 	);
